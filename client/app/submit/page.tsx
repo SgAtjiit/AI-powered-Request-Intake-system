@@ -6,13 +6,13 @@ export default function SubmitPage() {
     <main className="page-shell">
       <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="space-y-6">
-          <p className="eyebrow">Request intake</p>
+          <p className="eyebrow">AI-powered intake</p>
           <div className="space-y-4">
             <h1 className="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-              Capture requests fast. Let AI triage the rest.
+              AI-powered-intake request system
             </h1>
             <p className="max-w-2xl text-base leading-8 text-slate-600">
-              Submit a support request, save it instantly, and let the backend enrich it with category, urgency, and a concise summary in the background.
+              Submit a support request, save it instantly, and let the AI-powered-intake request system enrich it with category, urgency, and a concise summary in the background.
             </p>
           </div>
           <div className="card-surface space-y-4 p-6">

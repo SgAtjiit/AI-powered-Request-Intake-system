@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Connectix AI Workflow Engine',
-  description: 'AI-powered request intake system for QenixLabs.',
+  title: 'AI-powered-intake request system',
+  description: 'AI-powered-intake request system for QenixLabs.',
 };
 
 export default function RootLayout({
@@ -39,10 +39,10 @@ export default function RootLayout({
                 </span>
                 <span>
                   <span className="block text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Connectix
+                    AI-powered
                   </span>
                   <span className="block text-base font-semibold">
-                    AI Workflow Engine
+                    intake request system
                   </span>
                 </span>
               </Link>
