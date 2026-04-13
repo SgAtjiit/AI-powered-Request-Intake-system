@@ -52,10 +52,14 @@ export class AiService {
     }
 
     try {
+      const frontendUrl =
+        this.configService.get<string>('FRONTEND_URL')?.replace(/\/$/, '') ??
+        'http://localhost:3000';
+
       const response = await axios.post(
         'https://openrouter.ai/api/v1/chat/completions',
         {
-          model: 'mistralai/mistral-7b-instruct:free',
+          model: 'openrouter/free',
           temperature: 0.1,
           messages: [
             {
@@ -90,7 +94,7 @@ export class AiService {
           headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
-            'HTTP-Referer': 'http://localhost:3000',
+            'HTTP-Referer': frontendUrl,
             'X-Title': 'AI-powered-intake request system',
           },
           timeout: 15000,
@@ -124,8 +128,21 @@ export class AiService {
         this.logger.warn('Failed to parse AI response JSON.');
         return FALLBACK_ENRICHMENT;
       }
-    } catch {
-      this.logger.error('OpenRouter enrichment failed.');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        this.logger.error(
+          `OpenRouter enrichment failed: status=${
+            error.response?.status ?? 'unknown'
+          } data=${JSON.stringify(error.response?.data) ?? 'null'} message=${
+            error.message
+          }`,
+        );
+      } else if (error instanceof Error) {
+        this.logger.error(`OpenRouter enrichment failed: ${error.message}`);
+      } else {
+        this.logger.error('OpenRouter enrichment failed.');
+      }
+
       return FALLBACK_ENRICHMENT;
     }
   }
