@@ -5,8 +5,14 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://ai-powered-request-intake-system.vercel.app',
+    process.env.FRONTEND_URL?.replace(/\/$/, ''),
+  ].filter((origin): origin is string => Boolean(origin));
+
   app.enableCors({
-    origin: 'https://ai-powered-request-intake-system.vercel.app/',
+    origin: allowedOrigins,
   });
 
   app.useGlobalPipes(
