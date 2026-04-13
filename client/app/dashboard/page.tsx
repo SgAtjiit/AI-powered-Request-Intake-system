@@ -29,7 +29,7 @@ async function DashboardResults({ category }: { category: CategoryFilter }) {
   });
 
   if (!response.data.length) {
-    return <EmptyState />;
+    return <EmptyState category={category} />;
   }
 
   return (

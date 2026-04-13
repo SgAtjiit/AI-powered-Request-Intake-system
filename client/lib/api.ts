@@ -29,8 +29,29 @@ export interface CreateRequestInput {
 const apiBaseUrl =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ?? 'http://localhost:3001';
 
+export function getApiErrorMessage(error: unknown) {
+  if (axios.isAxiosError(error)) {
+    return (
+      error.response?.data?.message ??
+      'We could not reach the API. Please try again in a moment.'
+    );
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return 'Something went wrong. Please try again.';
+}
+
 export async function createRequest(payload: CreateRequestInput) {
-  const response = await axios.post<RequestRecord>(`${apiBaseUrl}/requests`, payload);
+  const response = await axios.post<RequestRecord>(
+    `${apiBaseUrl}/requests`,
+    payload,
+    {
+      timeout: 10000,
+    },
+  );
   return response.data;
 }
 

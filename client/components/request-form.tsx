@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { createRequest, CreateRequestInput } from '@/lib/api';
+import {
+  createRequest,
+  CreateRequestInput,
+  getApiErrorMessage,
+} from '@/lib/api';
 
 export function RequestForm() {
   const {
@@ -23,10 +27,8 @@ export function RequestForm() {
       setSuccessMessage(
         'Your request has been submitted. AI enrichment will appear on the dashboard shortly.',
       );
-    } catch {
-      setErrorMessage(
-        'We could not submit your request right now. Please try again in a moment.',
-      );
+    } catch (error) {
+      setErrorMessage(getApiErrorMessage(error));
     }
   };
 
