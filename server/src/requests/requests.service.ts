@@ -36,8 +36,10 @@ export class RequestsService {
         );
 
         await this.requestModel.findByIdAndUpdate(savedDoc._id, enrichment);
-      } catch (error) {
-        this.logger.warn(`Request ${savedDoc._id.toString()} enrichment failed.`);
+      } catch {
+        this.logger.warn(
+          `Request ${savedDoc._id.toString()} enrichment failed.`,
+        );
       }
     });
 

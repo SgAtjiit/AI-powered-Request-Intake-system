@@ -20,6 +20,17 @@ const FALLBACK_ENRICHMENT: AiEnrichment = {
   urgency: 'low',
 };
 
+function extractJsonPayload(content: string) {
+  const trimmed = content.trim();
+
+  if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+    return trimmed;
+  }
+
+  const match = trimmed.match(/\{[\s\S]*\}/);
+  return match?.[0] ?? trimmed;
+}
+
 @Injectable()
 export class AiService {
   private readonly logger = new Logger(AiService.name);
@@ -34,7 +45,9 @@ export class AiService {
     const apiKey = this.configService.get<string>('OPENROUTER_API_KEY');
 
     if (!apiKey) {
-      this.logger.warn('OPENROUTER_API_KEY is missing. Falling back to defaults.');
+      this.logger.warn(
+        'OPENROUTER_API_KEY is missing. Falling back to defaults.',
+      );
       return FALLBACK_ENRICHMENT;
     }
 
@@ -63,6 +76,8 @@ export class AiService {
                 `- urgency must be exactly one of: ${REQUEST_URGENCIES.join(', ')}`,
                 '- summary must be a single sentence, under 20 words',
                 '- Do not add any other keys or text outside the JSON object',
+                '',
+                'User:',
               ].join('\n'),
             },
             {
@@ -84,17 +99,20 @@ export class AiService {
 
       try {
         const parsed =
-          typeof rawContent === 'string' ? JSON.parse(rawContent.trim()) : null;
+          typeof rawContent === 'string'
+            ? JSON.parse(extractJsonPayload(rawContent))
+            : null;
 
         if (
           parsed &&
           REQUEST_CATEGORIES.includes(parsed.category) &&
           REQUEST_URGENCIES.includes(parsed.urgency) &&
-          typeof parsed.summary === 'string'
+          typeof parsed.summary === 'string' &&
+          parsed.summary.trim().length > 0
         ) {
           return {
             category: parsed.category,
-            summary: parsed.summary,
+            summary: parsed.summary.trim(),
             urgency: parsed.urgency,
           };
         }
