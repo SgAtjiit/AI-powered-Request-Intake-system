@@ -90,6 +90,8 @@ export class AiService {
           headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
+            'HTTP-Referer': 'http://localhost:3000',
+            'X-Title': 'Connectix AI Workflow Engine',
           },
           timeout: 15000,
         },
