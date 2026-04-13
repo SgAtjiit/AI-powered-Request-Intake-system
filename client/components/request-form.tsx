@@ -23,7 +23,7 @@ export function RequestForm() {
       setSuccessMessage(
         'Your request has been submitted. AI enrichment will appear on the dashboard shortly.',
       );
-    } catch (error) {
+    } catch {
       setErrorMessage(
         'We could not submit your request right now. Please try again in a moment.',
       );

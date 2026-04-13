@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { DashboardFilter } from '@/components/dashboard-filter';
+import { DashboardSummary } from '@/components/dashboard-summary';
 import { EmptyState } from '@/components/empty-state';
 import { RequestCard } from '@/components/request-card';
 import { RequestSkeletonList } from '@/components/request-skeleton-list';
@@ -33,6 +34,7 @@ async function DashboardResults({ category }: { category: CategoryFilter }) {
 
   return (
     <div className="space-y-4">
+      <DashboardSummary total={response.total} category={category} />
       {response.data.map((request) => (
         <RequestCard key={request._id} request={request} />
       ))}
