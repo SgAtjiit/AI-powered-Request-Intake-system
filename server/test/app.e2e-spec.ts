@@ -1,24 +1,19 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import {
+  REQUEST_CATEGORIES,
+  REQUEST_URGENCIES,
+} from '../src/requests/schemas/request.schema';
 
-describe('AppController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
-    await app.init();
+describe('request triage configuration', () => {
+  it('keeps the allowed category values aligned with the API contract', () => {
+    expect(REQUEST_CATEGORIES).toEqual([
+      'billing',
+      'support',
+      'feedback',
+      'general',
+    ]);
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('keeps the allowed urgency values aligned with the API contract', () => {
+    expect(REQUEST_URGENCIES).toEqual(['low', 'medium', 'high']);
   });
 });
