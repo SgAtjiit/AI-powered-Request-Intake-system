@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # AI-powered-intake request system
+=======
+# AI Workflow Engine
+>>>>>>> dfa4326c90216a16a2b1a5c6ec939247b1141fc5
 
 AI-powered-intake request system built for the QenixLabs full stack assessment. The app accepts user requests from a Next.js 14 frontend, stores them immediately through a NestJS API, and enriches each request asynchronously with OpenRouter-powered triage metadata.
 
