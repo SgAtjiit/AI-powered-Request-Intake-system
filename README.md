@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 # AI-powered-intake request system
+=======
+
+# AI-powered-intake request system
+
+# AI Workflow Engine
+>>>>>>> 766be3954a250e7760c8d89343f56fd8f0a3fccf
 
 ![Next.js 14](https://img.shields.io/badge/Next.js_14-App_Router-111111?style=for-the-badge&logo=next.js&logoColor=white)
 ![NestJS](https://img.shields.io/badge/NestJS-Backend-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
@@ -307,6 +314,7 @@ The following checks were run during development:
 - `client`: `npm run lint`
 - `client`: `npm run build`
 
+<<<<<<< HEAD
 ## Known Limitations and Trade-offs
 
 - The dashboard currently loads the first page with a fixed limit of 10 records.
@@ -324,3 +332,5 @@ The following checks were run during development:
 ## Author Notes
 
 This project was designed to reflect a production-minded approach rather than just a demo flow. The focus was on clean module boundaries, predictable async behavior, strong validation, and user-facing clarity at every state of the workflow.
+=======
+>>>>>>> 766be3954a250e7760c8d89343f56fd8f0a3fccf
