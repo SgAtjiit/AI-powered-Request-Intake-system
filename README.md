@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # AI-powered-intake request system
 =======
 # AI Workflow Engine
