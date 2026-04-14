@@ -2,7 +2,6 @@
 
 # AI-powered-intake request system
 
-# AI Workflow Engine
 
 ![Next.js 14](https://img.shields.io/badge/Next.js_14-App_Router-111111?style=for-the-badge&logo=next.js&logoColor=white)
 ![NestJS](https://img.shields.io/badge/NestJS-Backend-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
