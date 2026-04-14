@@ -2,7 +2,6 @@
 # AI-powered-intake request system
 =======
 # AI Workflow Engine
->>>>>>> dfa4326c90216a16a2b1a5c6ec939247b1141fc5
 
 AI-powered-intake request system built for the QenixLabs full stack assessment. The app accepts user requests from a Next.js 14 frontend, stores them immediately through a NestJS API, and enriches each request asynchronously with OpenRouter-powered triage metadata.
 
@@ -114,8 +113,3 @@ Returns paginated request data and optionally filters on category server-side.
 - `client`: `npm run lint`
 - `client`: `npm run build`
 
-## Known Limitations / Trade-offs
-
-- Live API verification against MongoDB and OpenRouter was not run in this workspace because a local MongoDB server was not available.
-- The fallback AI enrichment path intentionally returns a safe default object when OpenRouter fails or returns malformed JSON, which favors availability over strict error surfacing.
-- The dashboard currently loads the first page of requests with a fixed limit of 10, which keeps the implementation focused on the assessment requirements.
