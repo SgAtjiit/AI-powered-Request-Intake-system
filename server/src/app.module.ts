@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
 import { AiModule } from './ai/ai.module';
 import { RequestsModule } from './requests/requests.module';
 
@@ -20,5 +21,6 @@ import { RequestsModule } from './requests/requests.module';
     AiModule,
     RequestsModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
